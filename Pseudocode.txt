@@ -1,0 +1,73 @@
+pseudocode order makanan online
+
+MULAI
+
+DECLARE daftar_restoran ARRAY OF STRING
+DECLARE daftar_menu ARRAY OF STRING
+DECLARE menu_pilihan ARRAY OF STRING
+DECLARE jumlah_pilihan ARRAY OF INTEGER
+DECLARE alamat_tujuan STRING
+DECLARE metode_pembayaran STRING
+DECLARE order_selesai BOOLEAN
+
+SET daftar_restoran = ["Bo Bakul Omah", "Dapoer Rakyat", "Ayam Gepuk Pak Gembus", "Kedai Jambu", "Bale 23"]
+SET daftar_menu = ["pecel ayam", "pecel lele", "ayam kremes", "pecak ikan nila", "cumi saus padang"]
+SET pesanan = []
+
+PRINT "Selamat datang di GoFood"
+PRINT "Silahkan pilih restoran yang ingin dipesan"
+
+FOR i IN daftar_restoran DO
+PRINT i
+ENDFOR
+
+INPUT restoran_pilihan
+
+IF restoran_pilihan NOT IN daftar_restoran THEN
+PRINT "Maaf, restoran tidak tersedia"
+ELSE
+PRINT "Silahkan pilih menu yang tersedia di restoran"
+FOR i IN daftar_menu DO
+PRINT i
+ENDFOR
+
+WHILE order_selesai == FALSE DO
+    INPUT menu_pilihan
+    IF menu_pilihan NOT IN daftar_menu THEN
+        PRINT "Menu tidak tersedia"
+    ELSE
+        INPUT jumlah_pilihan
+        pesanan[menu_pilihan] = jumlah_pilihan
+        PRINT "Berhasil ditambahkan ke keranjang belanja."
+        PRINT "Apakah Anda ingin menambah pesanan lain? (Y/N)"
+        INPUT tambah_pesanan
+        IF tambah_pesanan == "N" THEN
+            order_selesai = TRUE
+        ENDIF
+    ENDIF
+ENDWHILE
+
+PRINT "Silahkan masukkan alamat tujuan pengiriman:"
+INPUT alamat_tujuan
+PRINT "Silahkan pilih metode pembayaran:"
+INPUT metode_pembayaran
+IF metode_pembayaran == "non-tunai" THEN
+    PRINT "Silahkan pilih pembayaran elektronik yang tersedia:"
+    PRINT "OVO"
+    INPUT pembayaran_elektronik
+    PRINT "Pesanan Anda berhasil diproses dengan pembayaran OVO"
+ELSE
+    PRINT "Silahkan pilih opsi bayar di tempat:"
+    PRINT "Bayar dengan uang tunai"
+    INPUT bayar_di_tempat
+    PRINT "Pesanan Anda berhasil diproses dengan opsi bayar di tempat."
+ENDIF
+
+PRINT "Berikut adalah rincian pesanan Anda:"
+FOR menu, jumlah IN pesanan DO
+    PRINT "Membuat pesanan"
+ENDFOR
+PRINT "Pesanan Anda akan segera dikirim ke alamat tujuan "
+PRINT "Terima kasih telah menggunakan aplikasi GoFood, Happy Eating!! ."    
+    
+SELESAI
